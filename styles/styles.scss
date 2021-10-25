@@ -1,0 +1,158 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+$violet: hsl(257, 40%, 49%);
+$softMagenta: hsl(300, 69%, 71%);
+$white: #ffffff;
+$max-width: 850px;
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background: $violet url(../images/bg-desktop.svg) no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+
+	@media screen and (max-width: $max-width) {
+		background: $violet url(../images/bg-mobile.svg) no-repeat;
+	}
+}
+
+main {
+	width: 90%;
+	height: 90%;
+	padding: 0 50px;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 120px 1fr 80px;
+	grid-template-areas:
+		"header header"
+		"mockup section"
+		"footer footer";
+
+	@media screen and (max-width: $max-width) {
+		height: 100vh;
+		padding: 0px;
+
+		grid-template-columns: 1fr;
+		grid-template-rows: 120px 0.8fr 1.2fr 80px;
+		grid-template-areas:
+			"header"
+			"mockup"
+			"section"
+			"footer";
+		align-items: center;
+		//justify-items: center;
+	}
+
+	header {
+		grid-area: header;
+		width: 100%;
+		height: 120px;
+
+		display: flex;
+		align-items: center;
+
+		.logo {
+			width: 15%;
+		}
+
+		@media screen and (max-width: $max-width) {
+			.logo {
+				width: 40%;
+			}
+		}
+	}
+
+	footer {
+		grid-area: footer;
+
+		height: 80px;
+
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		div {
+			width: 128px;
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.icon {
+		}
+
+		@media screen and(max-width:$max-width) {
+			justify-content: center;
+		}
+	}
+
+	.mockup {
+		grid-area: mockup;
+		width: 100%;
+	}
+
+	section {
+		grid-area: section;
+		padding: 40px 75px;
+
+		h1 {
+			font-family: "Poppins", sans-serif;
+			font-weight: 600;
+			font-size: 36px;
+			line-height: 48px;
+			color: $white;
+		}
+
+		p {
+			font-family: "Open Sans", sans-serif;
+			color: $white;
+
+			margin: 30px 0;
+		}
+
+		button {
+			width: 200px;
+			height: 50px;
+
+			background-color: $white;
+			border: transparent;
+			border-radius: 50px;
+
+			font-family: "Open Sans", sans-serif;
+			font-size: 16px;
+			color: $violet;
+
+			&:hover {
+				background-color: $softMagenta;
+				color: $white;
+			}
+		}
+
+		@media screen and (max-width: $max-width) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0;
+
+			h1 {
+				text-align: center;
+				font-size: 24px;
+				line-height: 36px;
+			}
+			p {
+				text-align: center;
+			}
+
+			button {
+				width: 250px;
+				height: 40px;
+			}
+		}
+	}
+}
